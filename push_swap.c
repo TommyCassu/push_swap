@@ -6,7 +6,7 @@
 /*   By: tcassu <tcassu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:35:34 by tcassu            #+#    #+#             */
-/*   Updated: 2025/04/10 14:42:53 by tcassu           ###   ########.fr       */
+/*   Updated: 2025/04/10 18:56:20 by tcassu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,23 +47,35 @@ void	initialise_lst(char *av[], t_stack_node **a)
 	}
 }
 
+int	is_valid_integer(const char *str)
+{
+	int	i;
+
+	i = 0;
+	if (str[i] == '-')
+		i++;
+	if (str[i] == '\0')
+		return (0);
+	while (str[i])
+	{
+		if (str[i] < '0' || str[i] > '9')
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int	ft_list_is_valid(int nbwords, char **list)
 {
 	int	i;
-	int	j;
 	int	actual_number;
 	int	k;
 
 	i = 1;
 	while (i <= nbwords)
 	{
-		j = -1;
-		while (list[i][++j])
-		{
-			if (list[i][j] < '0' || list[i][j] > '9')
-				if (list[i][j] == '-' && j != 0)
-					return (1);
-		}
+		if (!is_valid_integer(list[i]) || !ft_atoi(list[i]))
+			return (1);
 		actual_number = ft_atoi(list[i]);
 		k = i + 1;
 		while (k <= nbwords)
@@ -83,7 +95,6 @@ int	main(int ac, char *av[])
 	a = NULL;
 	if (ac < 2)
 	{
-		ft_putstr_fd("Error\n", 1);
 		return (0);
 	}
 	if (ft_list_is_valid(ac - 1, av) == 1)
@@ -92,7 +103,8 @@ int	main(int ac, char *av[])
 		return (0);
 	}
 	initialise_lst(av, &a);
-	sort(&a);
+	if (!is_sorted(a))
+		sort(&a);
 	lstclear(&a);
 	return (1);
 }

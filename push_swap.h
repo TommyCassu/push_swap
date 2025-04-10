@@ -6,7 +6,7 @@
 /*   By: tcassu <tcassu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:35:32 by tcassu            #+#    #+#             */
-/*   Updated: 2025/04/10 13:59:56 by tcassu           ###   ########.fr       */
+/*   Updated: 2025/04/10 18:44:57 by tcassu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ void			sort_3(t_stack_node **stack);
 int				value_outside_lst(t_stack_node *stack, int num);
 int				count_rotate(int a, int b);
 /* Sort utils */
+int				is_sorted(t_stack_node *stack);
 int				value_inside_lst(t_stack_node *stack, int num);
 int				value_outside_lst(t_stack_node *stack, int num);
 int				value_min_lst(t_stack_node *stack);

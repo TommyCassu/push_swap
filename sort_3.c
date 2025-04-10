@@ -6,11 +6,27 @@
 /*   By: tcassu <tcassu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/09 21:26:36 by tcassu            #+#    #+#             */
-/*   Updated: 2025/04/10 13:42:51 by tcassu           ###   ########.fr       */
+/*   Updated: 2025/04/10 18:57:00 by tcassu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	is_sorted(t_stack_node *stack)
+{
+	t_stack_node	*current;
+
+	if (!stack)
+		return (1);
+	current = stack;
+	while (current->next != NULL)
+	{
+		if (current->value > current->next->value)
+			return (0);
+		current = current->next;
+	}
+	return (1);
+}
 
 void	sort_3(t_stack_node **stack)
 {

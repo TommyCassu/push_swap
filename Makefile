@@ -6,7 +6,7 @@
 #    By: tcassu <tcassu@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/04/10 02:29:53 by tcassu            #+#    #+#              #
-#    Updated: 2025/04/10 14:40:32 by tcassu           ###   ########.fr        #
+#    Updated: 2025/04/10 18:59:28 by tcassu           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,13 +35,13 @@ CFLAGS		= -Wall -Werror -Wextra
 all:		${NAME}
 
 .c.o:
-			${GCC} -c -I ${INCLUDES} $< -o ${<:.c=.o}
+			${GCC} ${CFLAGS} -c -I ${INCLUDES} $< -o ${<:.c=.o}
 
 ${NAME}:	${OBJS}
 			make -C $(LIBFT)
 			cp libft/libft.a .
 			mv libft.a $(NAME)
-			${GCC} -o ${NAME} ${OBJS} -Llibft -lft
+			${GCC} ${CFLAGS} -o ${NAME} ${OBJS} -Llibft -lft
 
 
 clean:
