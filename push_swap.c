@@ -6,7 +6,7 @@
 /*   By: tcassu <tcassu@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 14:35:34 by tcassu            #+#    #+#             */
-/*   Updated: 2025/04/10 14:36:05 by tcassu           ###   ########.fr       */
+/*   Updated: 2025/04/10 14:42:53 by tcassu           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,5 @@ int	main(int ac, char *av[])
 	initialise_lst(av, &a);
 	sort(&a);
 	lstclear(&a);
-	ft_putstr_fd("\n", 1);
 	return (1);
 }
